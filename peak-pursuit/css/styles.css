@@ -1,0 +1,237 @@
+.header-container {
+    text-align: center;
+    position: relative;
+}
+
+.cart-icon-container {
+    position: absolute;
+    top: 175px;
+    right: 25px;
+    padding: 10px;
+}
+
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+}
+
+.navbar {
+    margin-top: 10px;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+}
+
+.nav-menu {
+    list-style: none; /* removes bullet point from beginning of each list item */
+    padding-left: 0;  /* overrides the default indent given to list items */
+}
+
+.nav-item {
+    display: inline-block; /* display the menu items inline */
+
+    /* spacing between menu items */
+    margin-left: 50px;
+    margin-right: 50px;
+
+    position: relative;
+}
+
+.nav-item a {
+    text-decoration: none; /* removes the underline from links within nav-item */
+    color: #333333;
+    padding: 10px 20px;    /* 10px top/bottom, 20px left/right */
+    display: block;
+}
+
+.dropdown-content {
+    display: none;      /* hide the dropdown content initially */
+    position: absolute; /* allows dropdown content to float over other content */
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);   /* 0.2 = 20% opacity */
+    z-index: 1; /* sets stack order of dropdown content, ensuring it is above other content */
+}
+
+.dropdown-content a {
+    color: rgb(0, 0, 0);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.flex-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;  /* evenly spread out items */
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.flex-item {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid #000000;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.flex-item img {
+    height: 175px;
+    max-width: 90%;
+    align-items: center;
+    object-fit: contain;
+}
+
+.product-price {
+    font-size: x-large;
+    margin-top: -5px;
+}
+
+.button {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: block;     /* ensure the buttons aren't side by side */
+    margin: 10px auto;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 90%;
+}
+
+.button:hover {
+    background-color: #007B9E;
+}
+
+.cart-item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.clear-cart {
+    background-color: #555555;
+    width: 200px;
+}
+
+.clear-cart:hover {
+    background-color: #444444;
+}
+
+.checkout {
+    width: 200px;
+}
+
+.toggle-description {
+    background-color: #555555;
+}
+
+.toggle-description:hover {
+    background-color: #444444;
+}
+
+.description {
+    max-height: 0;
+    overflow: hidden;
+}
+
+.description.scrollable {
+    max-height: 500px;
+    overflow-y: auto; /* show vertical scroll bar when needed */
+}
+
+.nav-toggle {
+    display: none;  /* hide by default; only show on smaller screens */
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+    display: block;
+    background-color: #333333;
+    height: 3px;
+    width: 25px;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    margin: 5px 0;      /* 5px top/bottom, 0px left/right */
+}
+
+.nav-menu.active {
+    display: block;
+}
+
+/* for smartphones */
+@media screen and (max-width: 768px) {
+    .nav-toggle {
+        display: block;     /* show hamburger icon */
+    }
+
+    .nav-menu {
+        display: none;      /* hide the menu */
+        width: 100%;
+        background-color: #fff;
+        text-align: left;
+    }
+
+    .nav-item,
+    dropdown-content {
+        display: block;
+        margin-right: 0;
+    }
+
+    .nav-item a {
+        padding: 15px;
+        width: 100%;
+        display: block;
+    }
+
+    /* hamburger menu toggle button */
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+    }
+
+    /* hide dropdown content initially */
+    .dropdown-content {
+        margin-left: 35px;
+        display: block;
+        position: static;
+        box-shadow: none;
+    }
+
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .flex-item {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
