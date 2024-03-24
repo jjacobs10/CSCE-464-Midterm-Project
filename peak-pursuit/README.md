@@ -1,6 +1,6 @@
 # Peak Pursuit
 
-[GitHub] (https://github.com/jjacobs10/CSCE-464-Midterm-Project)
+[GitHub](https://github.com/jjacobs10/CSCE-464-Midterm-Project)
 
 Welcome to the source repository for my camping gear website, Peak Pursuit! This site contains products to suit a variety of outdoor and exercise needs. This website was developed for CSCE 464 at the University of Nebraska-Lincoln in Spring 2024.
 
