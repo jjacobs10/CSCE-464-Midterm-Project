@@ -13,44 +13,33 @@
 </div>
 
 <script>
+    const products = {
+        '1': { title: "5-Person Tent", price: 99.99, image: "/images/tent.jpg" },
+        '2': { title: "50-Degree Sleeping Bag", price: 19.99, image: "/images/sleeping bag.jpg" },
+        '3': { title: "Camping Chair", price: 29.99, image: "/images/camping chair.jpg" },
+        '4': { title: "Quick-Select Adjustable Dumbbell", price: 99.99, image: "/images/adjustable dumbbell.jpg" },
+        '5': { title: "Yoga Mat", price: 10.99, image: "/images/yoga mat.jpg" },
+        '6': { title: "Resistance Bands", price: 8.99, image: "/images/resistance bands.jpg" },
+        '7': { title: "Men's Moisture-Wicking T-Shirt", price: 9.99, image: "/images/moisture-wicking t-shirt.jpg" },
+        '8': { title: "Women's Compression Leggings", price: 26.99, image: "/images/compression leggings.jpg" },
+        '9': { title: "Women's Running Shoes", price: 79.99, image: "/images/womens running shoes.jpg" },
+        '10': { title: "Stainless Steel Water Bottle", price: 13.99, image: "/images/stainless steel water bottle.jpg" },
+        '11': { title: "Fitbit Charge 5 Fitness Tracker", price: 149.99, image: "/images/fitbit charge 5.jpg" },
+        '12': { title: "Gym Bag", price: 17.99, image: "/images/gym bag.jpg" }
+    };
+
     document.addEventListener('DOMContentLoaded', function () {
-        const cartPageItems = document.getElementById('cart-items');
-        const cartPageTotal = document.getElementById('cart-total');
-        let cart = JSON.parse(sessionStorage.getItem('cart')) || {};
-
-        const products = {
-            '1': { title: "5-Person Tent", price: 99.99 },
-            '2': { title: "50-Degree Sleeping Bag", price: 19.99 },
-            '3': { title: "Camping Chair", price: 29.99 },
-            '4': { title: "Quick-Select Adjustable Dumbbell", price: 99.99 },
-            '5': { title: "Yoga Mat", price: 10.99 },
-            '6': { title: "Resistance Bands", price: 8.99 },
-            '7': { title: "Men's Moisture-Wicking T-Shirt", price: 9.99 },
-            '8': { title: "Women's Compression Leggings", price: 26.99 },
-            '9': { title: "Women's Running Shoes", price: 79.99 },
-            '10': { title: "Stainless Steel Water Bottle", price: 13.99 },
-            '11': { title: "Fitbit Charge 5 Fitness Tracker", price: 149.99 },
-            '12': { title: "Gym Bag", price: 17.99 }
-        };
-
-        function updateCart() {
-            cartPageItems.innerHTML = '';
-            let total = 0;
-
-            Object.keys(cart).forEach(productId => {
-                const product = products[productId];
-                const quantity = cart[productId];
-                total += product.price * quantity;
-
-                const cartPageItem = document.createElement('div');
-                cartPageItem.classList.add('cart-item');
-                cartPageItem.innerHTML = `<p>${product.title}</p>
-                                          <p>Quantity: ${quantity}</p>
-                                          <p>Price: $${(product.price * quantity).toFixed(2)}</p>`;
-                cartPageItems.appendChild(cartPageItem);
-            });
-
-            cartPageTotal.textContent = `Total: $${total.toFixed(2)}`; // update total price display
+        loadCartFromServer();
+        updateCart();
+        if (getCookie('userToken')) {
+            fetch('/getCart.php')
+                .then(response => response.json())
+                .then(cart => {
+                    sessionStorage.setItem('cart', JSON.stringify(cart)); // sync with session storage
+                    updateCart();
+                });
+        } else {
+            updateCart();
         }
 
         document.getElementById('checkout').addEventListener('click', function () {
@@ -58,13 +47,24 @@
         });
 
         document.getElementById('clear-cart').addEventListener('click', function () {
-            cart = {};
-            sessionStorage.setItem('cart', JSON.stringify(cart)); // update sessionStorage with empty cart
-            location.reload();
+            fetch('/clearCart.php', {
+                method: 'POST',
+                credentials: 'include'
+            })
+                .then(response => response.text())
+                .then(data => {
+                    sessionStorage.setItem('cart', JSON.stringify({}));
+
+                    location.reload();
+                })
+                .catch(error => {
+                    console.error('Failed to clear cart:', error);
+                });
         });
 
         updateCart(); // display the cart items on page load
 
     });
 </script>
+
 </html>

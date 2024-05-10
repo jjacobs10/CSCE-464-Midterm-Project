@@ -22,6 +22,18 @@
     font-size: 12px;
 }
 
+.cart-button-container {
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+}
+
+.quantity-display {
+    min-width: 20px;
+    text-align: center;
+}
+
+
 .navbar {
     margin-top: 10px;
     border-bottom: 1px solid #ccc;
@@ -33,8 +45,32 @@
     padding-left: 0;  /* overrides the default indent given to list items */
 }
 
+.login-button-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+}
+
+.login-button {
+    padding: 8px 16px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+}
+
+.login-button:hover {
+    background-color: #e0e0e0;
+}
+
+button.plain {
+    all: revert;
+}
+
 .nav-item {
-    display: inline-block; /* display the menu items inline */
+    display: inline-block;
 
     /* spacing between menu items */
     margin-left: 50px;
@@ -147,6 +183,14 @@
 .toggle-description:hover {
     background-color: #444444;
 }
+
+/* .gray-button {
+    background-color: #555555;
+}
+
+.gray-button:hover {
+    background-color: #444444;
+} */
 
 .description {
     max-height: 0;

@@ -8,6 +8,13 @@
     <script src="/js/scripts.js"></script>
 </head>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        loadCartFromServer();
+        updateCartCount();
+    });
+</script>
+
 <body>
     <div class="header-container">
         <a href="/index.html">
@@ -15,10 +22,13 @@
         </a>
 
         <div class="cart-icon-container">
-            <a href="/pages/cart.html">
+            <a href="/pages/cart.html" id="cart-link">
                 <img src="/images/icons/shopping cart.jpg" alt="Shopping Cart" style="height:25px">
                 <span class="cart-count">0</span>
             </a>
+        </div>
+        <div class="login-button-container">
+            <a href="/pages/login.html" id="loginButton" class="login-button">Login/Register</a>
         </div>
 
         <!-- hamburger menu button -->
@@ -30,13 +40,15 @@
             <ul class="nav-menu">
                 <li class="nav-item"><a href="/index.html">Home</a></li>
                 <li class="nav-item dropdown">
-                    <a href="#">Shop</a>
+                    <a href="/pages/shop/shop.html">Shop</a>
                     <div class="dropdown-content">
                         <a href="/pages/shop/camping-gear.html">Camping Gear</a>
                         <a href="/pages/shop/fitness-equipment.html">Fitness Equipment</a>
                         <a href="/pages/shop/sportswear.html">Sportswear</a>
                         <a href="/pages/shop/accessories.html">Accessories</a>
                     </div>
+                    <li class="nav-item"><a href="/pages/about.html">About</a></li>
+                    <li class="nav-item"><a href="/pages/contact.html">Contact</a></li>
                 </li>
             </ul>
         </nav>
